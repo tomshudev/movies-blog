@@ -220,7 +220,7 @@ namespace OurMoviesBlog.DAL
                 new Post {
                     PostID = 1,
                     Title = "Why did they have to kill Leonardo",
-                    AuthorName = "Shahar Rozenberg",
+                    AuthorName = "Sagie Ivan",
                     Date=new DateTime(2018, 9, 10),
                     Content="I believe We all would have preferred Jack Dawson to live, even if it was Rose's death",
                     Category = Category.Celebs,
@@ -230,7 +230,7 @@ namespace OurMoviesBlog.DAL
                 new Post  {
                     PostID = 2,
                     Title = "More frightening than hell",
-                    AuthorName="Sharon Shrits",
+                    AuthorName="Niv Hindi",
                     Date=new DateTime(2018,5,2),
                     Content="As a person who loves horror movies, I admit it too, Annabelle has crossed every boundary - the most terrifying movie I have ever seen!",
                     Category = Category.Reviews,
@@ -239,7 +239,7 @@ namespace OurMoviesBlog.DAL
                 new Post  {
                     PostID = 3,
                     Title = "When part B is better then part A",
-                    AuthorName="Nofar Arev",
+                    AuthorName="Tom Shushan",
                     Date=new DateTime(2018,9,30),
                     Content="Even though the first 'fast and furious' was an excellent film, I must admit that the sequel was even better",
                     Category = Category.NewMovies,
@@ -258,7 +258,7 @@ namespace OurMoviesBlog.DAL
                 new Post  {
                     PostID = 5,
                     Title = "Best movie i have ever seen",
-                    AuthorName="Shahar Rozenberg",
+                    AuthorName="Sagie Ivan",
                     Date=new DateTime(2018,8,21),
                     Content="'Shrek' is by far the best movie ever made - I wish I could trade with Fiona",
                     Category = Category.Reviews,
@@ -278,7 +278,7 @@ namespace OurMoviesBlog.DAL
                 {
                     PostID = 7,
                     Title = "All about Inception",
-                    AuthorName = "Sharon Shrits",
+                    AuthorName = "Niv Hindi",
                     Date=new DateTime(2018,7,18),
                     Content = "The film opened last weekend at $62.8 million and could reach $140 million at the box office by the end of this weekend.",
                     Category = Category.BehindTheScene,
@@ -290,7 +290,7 @@ namespace OurMoviesBlog.DAL
                 {
                     PostID = 8,
                     Title = "Brad Pitt",
-                    AuthorName = "Shahar Rozenberg",
+                    AuthorName = "Sagie Ivan",
                     Date=new DateTime(2018,10,3),
                     Content = "When I ask Pitt what gives him the most comfort these days, he says, “I get up every morning and I make a fire. When I go to bed, I make a fire, just because—it makes me feel life. I just feel life in this house.”",
                     Category = Category.Celebs,
@@ -343,17 +343,17 @@ namespace OurMoviesBlog.DAL
             {
                 new User
                 {
-                    UserName="Shahar Rozenberg",
+                    UserName="Sagie Ivan",
                     Password="Shahar1234"
                 },
                 new User
                 {
-                    UserName="Nofar Arev",
+                    UserName="Tom Shushan",
                     Password="Nn123456"
                 },
                 new User
                 {
-                    UserName="Sharon Shrits",
+                    UserName="Niv Hindi",
                     Password="2wsx@WSX"
                 }
             };

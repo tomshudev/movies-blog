@@ -1,0 +1,23 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/d3")
+@Scripts.Render("~/bundles/pie")
+
+<head>
+    <style>
+        .arc text {
+            font: 10px sans-serif;
+            text-anchor: middle;
+        }
+
+        .arc path {
+            stroke: #fff;
+        }
+    </style>
+</head>
+
+<div class="container read-more">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<h2 style="text-align:center;">Movies Stats</h2>
+<svg style="text-align:center; margin-left: 110px;" width="700" height="390"></svg>

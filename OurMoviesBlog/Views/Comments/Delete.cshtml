@@ -1,0 +1,56 @@
+﻿@model OurMoviesBlog.Models.Comment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+    <h4>Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Post @Html.DisplayNameFor(model => model.Post.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Post.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color read-more">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

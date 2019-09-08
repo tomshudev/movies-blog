@@ -1,0 +1,53 @@
+﻿@model IEnumerable<OurMoviesBlog.Models.Post>
+
+@Html.Partial("Search")
+
+@foreach (var category in Enum.GetValues(typeof(OurMoviesBlog.Models.Category)))
+{
+    int index = 0;
+
+    <div class="section">
+        <h1 class="section-title">@category</h1>
+        <div style="display:flex;justify-content: space-between;">
+
+            @foreach (OurMoviesBlog.Models.Post post in Model.OrderByDescending(i => i.PostID).Where(i => i.Category == (OurMoviesBlog.Models.Category)category))
+            {
+                string img = !string.IsNullOrEmpty(post.ImgPath) ? "articles/" + post.ImgPath : (post.MovieId != null ? "movies/" + post.Movie.ImageName :"articles/movie-default.jpg");
+
+                <article class="homepage-article">
+                    <header>
+                        <div style="display: flex; flex-direction: column;">
+                            <img alt="home" src="@Url.Content("~/media/" + img)" class="article-image" />
+                            <div class="article-title">@Html.ActionLink(post.Title, "Details", new { id = post.PostID, movie = post.MovieId }, new { @style = "text-decoration:none; color: black;" })</div>
+                        </div>
+                        <div class="article-info small-text">
+                            <img class="svg-icon" src="~/media/svg/calendar.svg" />
+                            <time class="entry-date published updated" datetime="2018-09-19T14:29:51+00:00">@post.Date.ToShortDateString()</time> |
+                            <img class="svg-icon" src="~/media/svg/user.svg" />
+                            <div class="url fn n">@post.AuthorName</div> | 
+                            <img class="svg-icon" src="~/media/svg/clapperboard.svg" />
+                            <div style="font-weight:600;">@(post.MovieId != null? post.Movie.Name: "")</div>
+                        </div>
+                    </header>
+                    <div class="article-body">@post.Content</div>
+                </article>
+
+                if (Request.IsAuthenticated)
+                {
+                    <div class="read-more">
+                        @Html.ActionLink("Edit", "Edit", new { id = post.PostID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = post.PostID })
+                    </div>
+                }
+
+                index++;
+                if (index >= 2) { break; };
+            }
+        </div>
+
+        @if(Model.Where(i => i.Category == (OurMoviesBlog.Models.Category)category).ToArray().Length > 2)
+        {
+            <div class="read-more" style="text-align:end">@Html.ActionLink("Read More...", "Filter", new { postCategory = category }, null)</div>
+        }
+    </div>
+}

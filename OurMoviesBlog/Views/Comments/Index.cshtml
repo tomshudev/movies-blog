@@ -1,0 +1,71 @@
+﻿@model IEnumerable<OurMoviesBlog.Models.Comment>
+
+@{
+    ViewBag.Title = "Comments";
+}
+
+<h2 style="margin-bottom:30px;">Comments</h2>
+
+<h4 class="filter-title">Filter comments by</h4>
+
+<div class="container">
+    @using (Html.BeginForm("", "Comments", FormMethod.Post, new { @class = "form-inline" }))
+    {
+        <div class="first-filter-row">
+            <div class="form-group">
+                @Html.TextBox("searchAuthorName", "", new { @class = "form-control", placeholder = "Authore Name" })
+            </div>
+            <div class="form-group">
+                @Html.TextBox("searchTitle", "", new { @class = "form-control", placeholder = "Title" })
+            </div>
+            <input class="btn btn-search-movies" type="submit" value="Search" />
+        </div>
+    }
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Post @Html.DisplayNameFor(model => model.Post.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Post.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            @{
+                if (Request.IsAuthenticated)
+                {
+                    <td class="read-more">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CommentID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CommentID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CommentID })
+                    </td>
+                }
+            }
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,68 @@
+﻿.form-inline {
+    margin-left: 35%;
+    width: 25%;
+    margin-top: 5%;
+}
+
+.username {
+    text-align: left;
+}
+
+#username {
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+    height: 60px;
+    cursor: text;
+    border: 1px lightgrey solid;
+    border-radius: 10px;
+    outline: none;
+    margin: 20px 0 20px 0;
+    padding: 10px;
+}
+
+#username:focus {
+    border-color: pink;
+    border-width: 2px;
+}
+
+#password:focus {
+    border-color: pink;
+    border-width: 2px;
+}
+
+#password {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    height: 60px;
+    cursor: text;
+    border: 1px lightgrey solid;
+    border-radius: 10px;
+    outline: none;
+    margin: 20px 0 20px 0;
+}
+
+.btnLogin {
+    text-align: center;
+}
+
+.btnLogin:hover {
+    opacity: 0.8;
+}
+
+div:focus {
+    outline: none !important;
+}
+
+#error-msg {
+    color: red;
+}
+
+#success-msg {
+    color: green;
+}
+
+#error-msg, #success-msg {
+    margin: 25px;
+}

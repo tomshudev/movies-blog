@@ -1,0 +1,67 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/tweet")
+
+@{
+    ViewBag.Title = "TweetPage";
+}
+
+<div class="form-horizontal">
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="form">
+    <div>
+        <textarea id="tweetText" class="col-md-4 col-lg-offset-1" type="text" placeholder="Text to tweet"></textarea>
+    </div>
+    <div style="display:inline-flex">
+        <div>
+            <input class="btn tweet-btn" type="submit" id="btnTweet" value="Tweet" />
+        </div>
+        <canvas style="margin-top:-25px;" id="tweetCanvas" width="300" height="200"></canvas>
+    </div>
+</div>
+
+    <div class="container">
+        <div id="error-msg" class="alert-danger"></div>
+        <div id="success-msg" class="alert-success"></div>
+    </div>
+
+    <a id="tweetLink"></a>
+
+
+    <script>
+        var canvas = document.getElementById('tweetCanvas');
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+            // Draw shapes
+            ctx.beginPath();
+            ctx.moveTo(75, 25);
+            ctx.quadraticCurveTo(25, 25, 25, 62.5);
+            ctx.quadraticCurveTo(25, 100, 50, 100);
+            ctx.quadraticCurveTo(50, 120, 30, 125);
+            ctx.quadraticCurveTo(60, 120, 65, 100);
+            ctx.quadraticCurveTo(125, 100, 125, 62.5);
+            ctx.quadraticCurveTo(125, 25, 75, 25);
+            ctx.lineWidth = "1";
+            ctx.strokeStyle = "black";
+            ctx.font = "13px Arial";
+            ctx.fillText("tweet to", 50, 40);
+            ctx.fillText("ourMoviesBlog", 35, 60);
+            ctx.fillText("account!", 50, 80);
+            ctx.stroke();
+        } else {
+            alert('Not supported in this browser.');
+        }
+    </script>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

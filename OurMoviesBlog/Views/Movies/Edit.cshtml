@@ -1,0 +1,104 @@
+﻿@model OurMoviesBlog.Models.Movie
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Movie</h2>
+
+
+@using (Html.BeginForm("Edit", "Movies", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+        <div class="form-horizontal" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.MovieID)
+
+            <div class="fields-row">
+                <div class="movie-field">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="movie-field">
+                    @Html.LabelFor(model => model.Genre, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(model => model.Genre, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="fields-row">
+                <div class="movie-field">
+                    @Html.LabelFor(model => model.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ReleaseDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="movie-field">
+                    @Html.LabelFor(model => model.Producer, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Producer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Producer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="fields-row">
+                <div class="movie-field">
+                    @Html.LabelFor(model => model.RunningTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RunningTime, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.RunningTime, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="movie-field">
+                    @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EnumDropDownListFor(model => model.Language, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="fields-row">
+
+                <div class="movie-field">
+                    @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="movie-field">
+                    <div style="margin-top:10px;margin-left:15px">
+                        @Html.EditorFor(model => model.ImageName, new { htmlAttributes = new { @class = "image-name-edit"} })
+                        @Html.ValidationMessageFor(model => model.ImageName, "", new { @class = "text-danger" })
+                        <span style="font-weight:bold">Select File:</span>
+                        <input type="file" name="postedFile">
+                    </div>
+                    <div class="col-md-offset-2 col-md-10" style="margin-top:25px;margin-left:0!important;">
+                        <input style="width:50%; margin-top:30px;" type="submit" value="Save" class="btn btn-default">
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+<div class="read-more">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

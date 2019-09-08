@@ -1,0 +1,81 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Movies Blog</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Styles/home_page.css")
+</head>
+
+
+
+
+<body>
+
+
+    <div>
+        <!-- <audio src="./audio/mymusic.mp3" type="audio/mpeg" autoplay /> -->
+    </div>
+    <header>
+        <div class="blog-app-bar">
+            <h6 class="blog-title">@Html.ActionLink("Movies Blog", "Index", "Posts")</h6>
+            <div style="width: 90%">
+                <nav class="nav">
+                    <!-- Navigation -->
+                    <ul>
+                        <li class="nav-link">@Html.ActionLink("Movies", "Index", "Movies")</li>
+                        <li class="nav-link">@Html.ActionLink("Articles", "Filter", "Posts")</li>
+                        <li class="nav-link">@Html.ActionLink("Locations", "Index", "Maps")</li>
+                        <li class="nav-link">@Html.ActionLink("About", "About", "Home")</li>
+                        @{
+                            if (!Request.IsAuthenticated)
+                            {
+                                <li class="nav-link">@Html.ActionLink("Login", "Login", "Admin")</li>
+                            }
+                            else
+                            {
+                            <li class="nav-link dropdown options-dropdown">
+                                <button class="dropbtn options-btn">Options</button>
+                                <ul class="dropdown-content">
+                                    <li class="nav-link">@Html.ActionLink("Comments", "Index", "Comments")</li>
+                                    <li class="nav-link">@Html.ActionLink("Tweet", "TweetPage", "Twitter")</li>
+                                    <li class="nav-link">@Html.ActionLink("Logout", "Logout", "Admin")</li>
+                                </ul>
+                            </li>
+                            }
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main role="main" class="main-background">
+        <aside class="col-sm-2 aside">
+            <div class="sidebar-module">
+                <ul>
+                    <li class="nav-link">@Html.ActionLink("Movies", "Index", "Movies")</li>
+                    <li class="nav-link">@Html.ActionLink("Articles", "Filter", "Posts")</li>
+                    <li class="nav-link">@Html.ActionLink("Locations", "Index", "Maps")</li>
+                    <li class="nav-link">@Html.ActionLink("About", "About", "Home")</li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="container" style="width:80%;">
+            <div class="col-sm-12 blog-main">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+    <footer class="blog-footer">© 2018 Movies Blog - All Rights Reserved</footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿@model List<OurMoviesBlog.Models.Post>
+
+<div class="read-more" style="margin-bottom:15px;">@Html.ActionLink("Back to list", "Index")</div>
+
+@Html.Partial("Search")
+
+<div style="margin-top: 20px; border-top: 1px solid #e5e5e5;">
+    @foreach (var item in Model)
+    {
+        string img = !string.IsNullOrEmpty(item.ImgPath) ? "articles/" + item.ImgPath : (item.MovieId != null ? "movies/" + item.Movie.ImageName : "articles/movie-default.jpg");
+
+        <div class="article-container">
+            <ul>
+                <li>
+                    <img src="@Url.Content("~/media/" + img)" alt="" />
+                    <div style="display:flex; justify-content:space-between;">
+                        <h3>@Html.ActionLink(item.Title, "Details", new { id = item.PostID , movie = item.MovieId}, new { @style = "text-decoration:none; color: black;" })</h3>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div class="read-more">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.PostID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.PostID })
+                            </div>
+                        }
+                    </div>
+
+                    <div class="article-info small-text" style="width: 40% !important;">
+                        <img class="svg-icon" src="~/media/svg/calendar.svg" />
+                        <div class="entry-date published updated">@item.Date.ToShortDateString()</div> | 
+                        <img class="svg-icon" src="~/media/svg/user.svg" />
+                        <div class="url fn n">@item.AuthorName</div> | 
+                        <img class="svg-icon" src="~/media/svg/clapperboard.svg" />
+                        <div style="font-weight:600;">@(item.MovieId != null ? item.Movie.Name : "")</div>
+                    </div>
+                    <p>@item.Content</p>
+                </li>
+            </ul>
+        </div>
+    }
+</div>
+

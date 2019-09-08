@@ -1,0 +1,50 @@
+﻿@model OurMoviesBlog.Models.Comment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comment</h4>
+    <hr />
+    <dl class="dl-horizontal" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+        <dt>
+            Post @Html.DisplayNameFor(model => model.Post.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Post.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+    </dl>
+</div>
+<p class="read-more">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CommentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

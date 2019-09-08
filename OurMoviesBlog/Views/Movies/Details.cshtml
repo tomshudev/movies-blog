@@ -1,0 +1,68 @@
+﻿@model OurMoviesBlog.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details movie</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RunningTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RunningTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Language)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Language)
+        </dd>
+
+    </dl>
+</div>
+<p class="read-more">
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Edit | ", "Edit", new { id = Model.MovieID })
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,29 @@
+﻿@model OurMoviesBlog.Models.Post
+
+<div class="container" style="width: 100%; padding: 30px; line-height:2.5; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    <h2>Category Suggestion</h2>
+    <div>We noticed you didn't add a category to the post: <span style="font-weight:bold;">@Model.Title</span></div>
+    <div>We have a suggestion for you, category: <span style="font-weight:bold;">@ViewBag.Category</span></div>
+
+    <p class="btn" style="margin: 10px 0 20px 0;" href="#" role="button">@Html.ActionLink("Approve", "Approve", new { id = Model.PostID, category = ViewBag.Category }, new { @style = "color: white;" })</p>
+
+    <div>OR choose your category</div>
+
+    @using (Html.BeginForm("Suggestion", "Posts"))
+    {
+        @Html.AntiForgeryToken()
+
+    <div style="display: flex; margin-top:20px;">
+        @Html.HiddenFor(model => model.PostID)
+   
+        <div style="display:flex; margin: 3px 15px 0 0;">
+            @Html.DropDownList("category", EnumHelper.GetSelectList(typeof(OurMoviesBlog.Models.Category)), new { @class = "select-field btn-default" })
+        </div>
+   
+        <div>
+            <input class="btn btn-default" style="margin-top:-10px;" type="submit" value="Select"/>
+        </div>
+    </div>
+    }
+
+</div>

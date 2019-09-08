@@ -1,0 +1,53 @@
+﻿@model OurMoviesBlog.Models.Post
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/postDetails")
+
+@{
+    ViewBag.Title = "Details";
+    string img = !string.IsNullOrEmpty(Model.ImgPath) ? "articles/" + Model.ImgPath : (Model.MovieId != null ? "movies/" + Model.Movie.ImageName : "articles/movie-default.jpg");
+}
+
+<div class="blog-post">
+    <img src="@Url.Content("~/media/" + img)" alt="" />
+    <div style="display:flex; justify-content:space-between;">
+        <h3>@Model.Title</h3>
+        @if (Request.IsAuthenticated)
+        {
+            <div class="read-more">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = Model.PostID })
+            </div>
+        }
+    </div>
+    <div class="article-info small-text" style="width: 40% !important; margin-bottom: 10px;">
+        <img class="svg-icon" src="~/media/svg/calendar.svg" />
+        <div class="entry-date published updated">@Model.Date.ToShortDateString()</div> |
+        <img class="svg-icon" src="~/media/svg/user.svg" />
+        <div class="url fn n">@Model.AuthorName</div> |
+        <img class="svg-icon" src="~/media/svg/clapperboard.svg" />
+        <div style="font-weight:600;">@(Model.MovieId != null ? Model.Movie.Name : "")</div>
+    </div>
+    <p>@Model.Content</p>
+
+    @if (Model.MovieId != null)
+    {
+        <a id="morePosts">Want more posts of @Model.Movie.Name? click here</a>
+    }
+</div>
+
+<div class="container" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+    <h3 class="comments-title">Comments:</h3>
+    <br />
+    <ul class="comments-list col-md-8" id="comment-list">@Html.DisplayFor(model => model.Comments)</ul>
+</div>
+<div class="add-comment" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+    @*@Html.Action("Create", "Comment", new { PostID = Model.PostID, area = "" });*@
+    @*@Html.RenderPartial("Create", new { PostID = Model.PostID, area = "" })*@
+    @Html.Action("Add", "Comments", new { PostID = Model.PostID })
+
+</div>
+<hr>
+<div class="container read-more">
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.PostID }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</div>

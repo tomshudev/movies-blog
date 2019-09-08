@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OurMoviesBlog.Models.Map>
+
+<html>
+
+<head>
+    <title>addmultiplelayeritemsHTML</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <style type='text/css'>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+            font-family: 'Segoe UI',Helvetica,Arial,Sans-Serif
+        }
+    </style>
+</head>
+<body>
+    <div id='printoutPanel'></div>
+
+    <div id='myMap' style='width: 73vw; height: 85vh;'></div>
+    <script type='text/javascript'>
+        function loadMapScenario() {
+            var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+            var layer = new Microsoft.Maps.Layer();
+
+            var movies = @Html.Raw(Json.Encode(Model));
+            movies.forEach(movie => {
+                var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(movie.Location.Latitude, movie.Location.Longtitude), {
+                    title: movie.Name
+                });
+                layer.add(pushpin);
+            });
+
+            map.layers.insert(layer);
+
+
+        }
+    </script>
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AvIU-bI7fquY8nNWndVVTeVfkCtQWK3JMv-sHl-kIsy4Nb2CCPPc_J9NETdmtdwg&callback=loadMapScenario' async defer></script>
+</body>
+</html>

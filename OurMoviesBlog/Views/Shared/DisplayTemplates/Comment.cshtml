@@ -1,0 +1,12 @@
+﻿@model OurMoviesBlog.Models.Comment
+@Styles.Render("~/Styles/view_comment.css")
+
+       
+<li class="blog-comment">
+    <p class="meta"><strong>@Html.DisplayFor(e => e.AuthorName)</strong></p>
+    <p>
+        <strong>@Model.Title</strong>
+        <br />
+        @Html.DisplayFor(e => e.Content)
+    </p>
+</li>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<OurMoviesBlog.Models.Post>
+
+<div class="container row">
+    <div class="list-inline buttons">
+        @using (Html.BeginForm("GroupByMovie", "Posts"))
+        {
+            <input class="btn btn-lg btn-stats" type="submit" value="Posts Stats" />
+            if (Request.IsAuthenticated)
+            {
+                <p class="btn btn-lg btn-add-post" href="#" role="button">@Html.ActionLink("Add Post", "Create", null, new { @style = "color: white;" })</p>
+            }
+        }
+
+    </div>
+</div>
+
+@using (Html.BeginForm("Filter", "Posts", FormMethod.Post, new { @class = "form-inline" }))
+{
+    var category = !string.IsNullOrEmpty(Request.Params["postCategory"]) ? Request.Params["postCategory"] : "Category";
+
+    <h3 class="filter-title">Filter posts by</h3>
+    <div class="form-group">
+        @Html.DropDownList("postCategory", EnumHelper.GetSelectList(typeof(OurMoviesBlog.Models.Category)), "category", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.TextBox("authorName", "", new { @class = "form-control", placeholder = "Author Name" })
+    </div>
+
+    <div class="form-group">
+        @Html.TextBox("movieName", "", new { @class = "form-control", placeholder = "Movie Name" })
+    </div>
+
+    <input class="btn btn-search-posts" type="submit" value="Search" />
+}

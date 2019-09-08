@@ -1,0 +1,56 @@
+﻿@model IEnumerable<OurMoviesBlog.Models.SelectByMovie>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/d3")
+@Scripts.Render("~/bundles/stats")
+<head>
+    <style>
+        .axis {
+            font: 10px sans-serif;
+        }
+
+        .bar {
+            fill: steelblue;
+        }
+
+            .bar:hover {
+                fill: brown;
+            }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+    </style>
+</head>
+
+<div class="container read-more"">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostsAmount)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostsAmount)
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<u><b>Statistics:</b></u>
+<br />
+<svg width="480" height="250"></svg>

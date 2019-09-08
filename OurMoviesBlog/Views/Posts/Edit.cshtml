@@ -1,0 +1,84 @@
+﻿@model OurMoviesBlog.Models.Post
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit post</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.PostID)
+
+        <div class="fields-row">
+            <div class="post-field">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="post-field">
+                @Html.LabelFor(model => model.AuthorName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AuthorName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AuthorName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="fields-row">
+            <div class="post-field">
+                @Html.LabelFor(model => model.Movie, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("MovieID",
+                        new SelectList((IEnumerable<OurMoviesBlog.Models.Movie>)ViewData["MoviesSelectable"], "MovieID", "Name"),"movie", new { @class = "select-field btn-default" })
+                </div>
+            </div>
+
+            <div class="post-field">
+                @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="fields-row">
+            <div class="post-field">
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("category", EnumHelper.GetSelectList(typeof(OurMoviesBlog.Models.Category)), new { @class = "select-field btn-default" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="fields-row">
+            <div class="post-field">
+                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="post-field">
+                <div class="col-md-offset-2 col-md-10" style="margin-left:0;">
+                    <input type="submit" value="Save" class="btn btn-default" style="margin-top:30px; width:50%;" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="read-more">
+    @Html.ActionLink("Back to List", "Index")
+</div>

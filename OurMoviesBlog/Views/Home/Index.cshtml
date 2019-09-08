@@ -1,0 +1,25 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/home")
+@Styles.Render("~/Content/admin_login.css")
+
+<div class="form-horizontal">
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-inline">
+        <input id="username" type="text" placeholder="Username" />
+        <input id="password" type="password" placeholder="Password" />
+        <input class="btn btn-search-posts" type="submit" id="btnLogin" value="Login" />
+    </div>
+
+    <div id="error-msg" class="alert-danger"></div>
+    <div id="success-msg" class="alert-success"></div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+}

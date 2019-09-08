@@ -1,0 +1,36 @@
+﻿@model OurMoviesBlog.Models.Comment
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/CommentsScript")
+    
+    <div class="form-horizontal">
+    </div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="panel  panel-default add-comment-pannel">
+        <div class="panel-body">
+            <div class="form-group">
+                <input id="authorName" class="col-md-4 col-lg-offset-1" type="text" placeholder="Your Name" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input id="title" class="col-md-4 col-lg-offset-1" type="text" placeholder="Title" />
+                <textarea id="content" class="col-lg-offset-1" type="text" placeholder="Content"></textarea>
+                <div id="postId"> @Model.PostID </div>
+            </div>
+        </div>
+        
+        <div class="panel-footer">
+            <input class="btn btn-search-posts" type="submit" id="addComment" value="Post Comment" />
+        </div>
+        
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

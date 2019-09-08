@@ -1,0 +1,97 @@
+﻿@model IEnumerable<OurMoviesBlog.Models.Movie>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/d3")
+@Scripts.Render("~/bundles/moviesRating")
+
+<div class="container row">
+    <div class="list-inline buttons">
+        @using (Html.BeginForm("PieChart", "Movies"))
+        {
+            <input class="btn btn-lg btn-stats" type="submit" value="Movies Stats" />
+            if (Request.IsAuthenticated)
+            {
+                <p class="btn btn-lg btn-add-movie" href="#" role="button">@Html.ActionLink("Add Movie", "Create", null, new { @style = "color: white;" })</p>
+            }
+        }
+
+    </div>
+</div>
+
+<h3 class="filter-title">Filter movies by</h3>
+
+<div class="container">
+    @using (Html.BeginForm("", "Movies", FormMethod.Post, new { @class = "form-inline" }))
+    {
+    <div class="first-filter-row">
+        <div class="form-group">
+            @Html.TextBox("SearchName", "", new { @class = "form-control", placeholder = "Name" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("SearchGenre", EnumHelper.GetSelectList(typeof(OurMoviesBlog.Models.Genre)), "Genre", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.DropDownList("SearchLanguage", EnumHelper.GetSelectList(typeof(OurMoviesBlog.Models.Language)), "Language", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="second-filter-row">
+        <div class="form-group">
+            @Html.TextBox("searchReleaseDate", "", new { @class = "form-control", placeholder = "Since Year" })
+        </div>
+        <input class="btn btn-search-movies" type="submit" value="Search" />
+    </div>
+    }
+</div>
+
+<div style="margin-top: 50px; display: flex; justify-content: space-around;flex-wrap: wrap;">
+    @foreach (var item in Model)
+    {
+        string img = !string.IsNullOrEmpty(item.ImageName) ? item.ImageName : "movie-default.jpg";
+
+        <div style="width: 350px;">
+            <div class="card u-clearfix">
+                <div class="card-media">
+                    <img src="@Url.Content("~/media/movies/" + img)" alt="" class="card-media-img" />
+                    <a class="card-media-preview u-flex-center" href="@Url.Action("Trailer", new { id = item.MovieID })">
+                        <svg fill="#ffffff" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z" />
+                            <path d="M0 0h24v24H0z" fill="none" />
+                        </svg>
+                    </a>
+                    <span class="card-media-tag card-media-tag-orange">@item.Genre</span>
+                </div>
+
+                <div class="card-body">
+                    <div class="card-body-title">
+                        <h4 style="width:45%;" class="card-body-heading">@Html.ActionLink(@item.Name, "Details", new { id = item.MovieID })</h4>
+                        <div class="card-body-stars u-clearfix">
+                            <div class="first-row" style="display:inline-flex;">
+                                <svg fill="#ebb91a" height="25" viewBox="0 0 18 18" width="25" xmlns="http://www.w3.org/2000/svg" style="margin-top:-3px;">
+                                    <path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z" />
+                                    <path d="M0 0h18v18H0z" fill="none" />
+                                </svg>
+                                <span class="imdbRating"> </span>
+                            </div>
+                            <div class="second-row">
+                                <span class="imdbVoters"></span>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-text">@item.RunningTime minutes | @item.Language</div>
+                    <div class="">Released: @item.ReleaseDate.ToShortDateString()</div>
+                    <div>Producer: @item.Producer</div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <div>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.MovieID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.MovieID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MovieID })
+                        </div>
+                    }
+                </div>
+            </div>
+    }
+    <script>
+        updateMoviesRate();
+    </script>
+</div>

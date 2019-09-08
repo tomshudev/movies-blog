@@ -137,7 +137,7 @@ namespace OurMoviesBlog.DAL
                     MovieID=10,
                     Name="Solo a Star Wars Story",
                     Genre=Genre.Drama,
-                    ReleaseDate=new DateTime(2018, 5, 10),
+                    ReleaseDate=new DateTime(2019, 5, 10),
                     Producer="Walt Disney Pictures",
                     RunningTime=135,
                     ImageName="Solo_A_Star_Wars_Story_poster.jpg",
@@ -221,7 +221,7 @@ namespace OurMoviesBlog.DAL
                     PostID = 1,
                     Title = "Why did they have to kill Leonardo",
                     AuthorName = "Sagie Ivan",
-                    Date=new DateTime(2018, 9, 10),
+                    Date=new DateTime(2019, 9, 10),
                     Content="I believe We all would have preferred Jack Dawson to live, even if it was Rose's death",
                     Category = Category.Celebs,
                     ImgPath="kate_winslet_jack_titanic_.jpg",
@@ -231,7 +231,7 @@ namespace OurMoviesBlog.DAL
                     PostID = 2,
                     Title = "More frightening than hell",
                     AuthorName="Niv Hindi",
-                    Date=new DateTime(2018,5,2),
+                    Date=new DateTime(2019,5,2),
                     Content="As a person who loves horror movies, I admit it too, Annabelle has crossed every boundary - the most terrifying movie I have ever seen!",
                     Category = Category.Reviews,
                     MovieId =movies[11].MovieID
@@ -240,7 +240,7 @@ namespace OurMoviesBlog.DAL
                     PostID = 3,
                     Title = "When part B is better then part A",
                     AuthorName="Tom Shushan",
-                    Date=new DateTime(2018,9,30),
+                    Date=new DateTime(2019,9,30),
                     Content="Even though the first 'fast and furious' was an excellent film, I must admit that the sequel was even better",
                     Category = Category.NewMovies,
                     ImgPath="fast-furious6.jpg",
@@ -250,7 +250,7 @@ namespace OurMoviesBlog.DAL
                     PostID = 4,
                     Title = "When comedy and horror connect",
                     AuthorName="Guest author",
-                    Date=new DateTime(2018,8,26),
+                    Date=new DateTime(2019,8,26),
                     Content="A great movie with great actors - I've never been so nervous from a comedy movie",
                     Category = Category.NewsFlash,
                     MovieId =movies[5].MovieID
@@ -259,7 +259,7 @@ namespace OurMoviesBlog.DAL
                     PostID = 5,
                     Title = "Best movie i have ever seen",
                     AuthorName="Sagie Ivan",
-                    Date=new DateTime(2018,8,21),
+                    Date=new DateTime(2019,8,21),
                     Content="'Shrek' is by far the best movie ever made - I wish I could trade with Fiona",
                     Category = Category.Reviews,
                     MovieId =movies[1].MovieID
@@ -268,7 +268,7 @@ namespace OurMoviesBlog.DAL
                     PostID = 6,
                     Title = "See it All the time",
                     AuthorName="Guest",
-                    Date=new DateTime(2018,8,21),
+                    Date=new DateTime(2019,8,21),
                     Content="I like this movie!!",
                     Category = Category.Reviews,
                     MovieId =movies[2].MovieID
@@ -279,7 +279,7 @@ namespace OurMoviesBlog.DAL
                     PostID = 7,
                     Title = "All about Inception",
                     AuthorName = "Niv Hindi",
-                    Date=new DateTime(2018,7,18),
+                    Date=new DateTime(2019,7,18),
                     Content = "The film opened last weekend at $62.8 million and could reach $140 million at the box office by the end of this weekend.",
                     Category = Category.BehindTheScene,
                     MovieId=movies[2].MovieID,
@@ -291,7 +291,7 @@ namespace OurMoviesBlog.DAL
                     PostID = 8,
                     Title = "Brad Pitt",
                     AuthorName = "Sagie Ivan",
-                    Date=new DateTime(2018,10,3),
+                    Date=new DateTime(2019,10,3),
                     Content = "When I ask Pitt what gives him the most comfort these days, he says, “I get up every morning and I make a fire. When I go to bed, I make a fire, just because—it makes me feel life. I just feel life in this house.”",
                     Category = Category.Celebs,
                     ImgPath="brad-pitt.jpg"
@@ -331,7 +331,7 @@ namespace OurMoviesBlog.DAL
                 {
                     CommentID=4,
                     PostID=5,
-                    Title="Shahar you are the queen!",
+                    Title="Sagie you are the king!",
                     AuthorName="beast%^&",
                     Content="Agree with every word you write! I choose movies only according to your reviews!",
                 },
@@ -344,7 +344,7 @@ namespace OurMoviesBlog.DAL
                 new User
                 {
                     UserName="Sagie Ivan",
-                    Password="Shahar1234"
+                    Password="Sagie1234"
                 },
                 new User
                 {

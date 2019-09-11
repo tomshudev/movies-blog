@@ -37,13 +37,13 @@ namespace OurMoviesBlog.Controllers
 
         // GET: Comments/Details/5
         [Authorize(Users = "Admin")]
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? commentID)
         {
-            if (id == null)
+            if (commentID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = db.Comments.Find(id);
+            Comment comment = db.Comments.Find(commentID);
             if (comment == null)
             {
                 return HttpNotFound();
@@ -112,13 +112,13 @@ namespace OurMoviesBlog.Controllers
 
         // GET: Comments/Edit/5
         [Authorize(Users = "Admin")]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? commentID)
         {
-            if (id == null)
+            if (commentID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = db.Comments.Find(id);
+            Comment comment = db.Comments.Find(commentID);
             if (comment == null)
             {
                 return HttpNotFound();

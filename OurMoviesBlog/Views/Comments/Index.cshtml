@@ -59,8 +59,8 @@
                 if (Request.IsAuthenticated)
                 {
                     <td class="read-more">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.CommentID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CommentID }) |
+                        @Html.ActionLink("Edit", "Edit", new { commentID = item.CommentID }) |
+                        @Html.ActionLink("Details", "Details", new { commentID = item.CommentID }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.CommentID })
                     </td>
                 }

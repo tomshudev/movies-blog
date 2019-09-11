@@ -12,8 +12,7 @@
 }
 
 @font-face {
-    font-family: 'blockletter Font';
-    src: url('../fonts/Blockletter.otf') format('truetype');
+    font-family: fantasy;
 }
 
 @font-face {
@@ -105,7 +104,6 @@ h6, .h6 {
 }
 
     .blog-title a {
-        font-family: 'hollywood Font';
         color: #820101;
     }
 
@@ -119,9 +117,18 @@ h6, .h6 {
     font: 100 20px/1.5 'blockletter Font';
 }
 
+.article-title a {
+    color: black;
+    transition: all 0.2s;
+}
+
+.article-title a:hover {
+    color: red;
+}
+
 .section-title {
     color: #820101;
-    font-family: 'blockletter Font';
+    font-family: fantasy;
 }
 
 .article-title:hover {
@@ -140,7 +147,7 @@ h6, .h6 {
 
 .nav-link {
     position: relative;
-    font-family: 'cartoon Font';
+    font-family: fantasy;
     font-weight: 600;
     color: black;
 }
@@ -424,6 +431,7 @@ nav ul {
             text-align: center;
             text-decoration: none;
             color: black;
+            transition: all 0.2s;
         }
 
             nav ul li a:hover {

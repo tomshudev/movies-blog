@@ -18,7 +18,7 @@
                     <header>
                         <div style="display: flex; flex-direction: column;">
                             <img alt="home" src="@Url.Content("~/media/" + img)" class="article-image" />
-                            <div class="article-title">@Html.ActionLink(post.Title, "Details", new { id = post.PostID, movie = post.MovieId }, new { @style = "text-decoration:none; color: black;" })</div>
+                            <div class="article-title">@Html.ActionLink(post.Title, "Details", new { id = post.PostID, movie = post.MovieId }, new { @style = "text-decoration:none;" })</div>
                         </div>
                         <div class="article-info small-text">
                             <img class="svg-icon" src="~/media/svg/calendar.svg" />
